@@ -6,7 +6,7 @@
 /*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 15:36:21 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/03 16:38:24 by kpedro           ###   ########.fr       */
+/*   Updated: 2025/05/03 17:55:08 by kpedro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,4 @@ void    Contact::set_number(std::string value)
 
 Contact::~Contact()
 {
-    std::cout << "deleted contact" << std::endl;
 }
