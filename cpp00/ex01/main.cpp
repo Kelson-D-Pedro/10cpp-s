@@ -3,37 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: darwin <darwin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:19:52 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/03 18:04:35 by kpedro           ###   ########.fr       */
+/*   Updated: 2025/05/04 01:24:05 by darwin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "PhoneBook.hpp"
 # include "Contact.hpp"
 
+static  std::string generic_auxiliar_function(const std::string message)
+{
+    std::string input;
+
+    std::cout << message << std::endl;
+    if (!std::getline(std::cin, input))
+    {
+        std::cout << "EOF Forcado, o programa ira encerrar por aqui" << std::endl;
+        std::exit(1);
+    }
+    while (input.empty())
+    {
+        std::cout << "Insira um texto valido" << std::endl;
+        std::getline(std::cin, input);
+    }
+    return (input);
+}
+
 static  void    fill_contact_fields(Contact *contact)
 {
-    std::string string;
+    std::string input;
 
-    std::cout << "Insira o primeiro nome" << std::endl;
-    std::cin >> string;
-    if (string.empty())
-        exit(1);
-    contact->set_fname(string);
-    std::cout << "Insira o sobrenome nome" << std::endl;
-    std::cin >> string;
-    contact->set_lname(string);
-    std::cout << "Insira o apelido" << std::endl;
-    std::cin >> string;
-    contact->set_nname(string);
-    std::cout << "Insira um segredo" << std::endl;
-    std::cin >> string;
-    contact->set_dark_secret(string);
-    std::cout << "Insira o numero de telefone" << std::endl;
-    std::cin >> string;
-    contact->set_number(string);
+    input = generic_auxiliar_function("Insira o primeiro nome");
+    contact->set_fname(input);
+    input = generic_auxiliar_function("Insira o sobrenome nome");
+    contact->set_lname(input);
+    input = generic_auxiliar_function("Insira o apelido");
+    contact->set_nname(input);
+    input = generic_auxiliar_function("Insira um segredo");
+    contact->set_dark_secret(input);
+    input = generic_auxiliar_function("Insira o numero de telefone");
+    contact->set_number(input);
 }
 
 int main()
@@ -41,11 +52,18 @@ int main()
     PhoneBook phonebook;
     Contact contact;
     std::string comand;
-    std::string teste;
 
     do
     {
-        std::cin >> comand;
+        std::cout << "1 - ADD" << std::endl;
+        std::cout << "2 - SEARCH" << std::endl;
+        std::cout << "3 - EXIT" << std::endl;
+        if (!std::getline(std::cin, comand))
+        {
+            std::cout << "EOF Forcado, o programa ira encerrar por aqui" << std::endl;
+            std::exit(1);
+        }
+        system("clear");
         if (comand.compare("ADD") == 0)
         {
             fill_contact_fields(&contact);
