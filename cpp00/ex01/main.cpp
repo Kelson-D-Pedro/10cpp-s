@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darwin <darwin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:19:52 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/04 01:24:05 by darwin           ###   ########.fr       */
+/*   Updated: 2025/05/05 16:43:38 by kpedro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "PhoneBook.hpp"
 # include "Contact.hpp"
+# include <unistd.h>
 
 static  std::string generic_auxiliar_function(const std::string message)
 {
@@ -73,10 +74,8 @@ int main()
         else if (comand.compare("SEARCH") == 0)
         {
             phonebook.search_contact();
+            usleep(5000 * 1000);
         }
-        
     } while (comand.compare("EXIT") != 0);
-    
-
     return 0;
 }
