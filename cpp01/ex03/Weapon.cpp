@@ -6,7 +6,7 @@
 /*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 17:00:18 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/07 18:06:43 by kpedro           ###   ########.fr       */
+/*   Updated: 2025/05/09 13:44:58 by kpedro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ Weapon::~Weapon()
 
 const std::string& Weapon::getType(void)
 {
-    
+    return (this->type);
 }
 
 void    Weapon::setType(std::string type)
 {
-    
+    this->type = type;
 }
