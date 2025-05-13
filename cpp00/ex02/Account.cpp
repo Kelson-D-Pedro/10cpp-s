@@ -6,7 +6,7 @@
 /*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:49:58 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/06 19:11:58 by kpedro           ###   ########.fr       */
+/*   Updated: 2025/05/13 18:49:06 by kpedro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Account::Account(int initial_deposit)
 {
     static int index;
     
-    this->_amount += initial_deposit;
+    this->_amount = initial_deposit;
     this->_nbDeposits = 0;
     this->_nbWithdrawals = 0;
     this->_accountIndex = index;
