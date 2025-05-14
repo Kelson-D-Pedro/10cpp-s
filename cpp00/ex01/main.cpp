@@ -6,7 +6,7 @@
 /*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:19:52 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/05 16:43:38 by kpedro           ###   ########.fr       */
+/*   Updated: 2025/05/14 13:23:17 by kpedro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,31 @@ static  std::string generic_auxiliar_function(const std::string message)
     return (input);
 }
 
-static  void    fill_contact_fields(Contact *contact)
+static  int verify_number(std::string input)
+{
+    std::string numbers = "0123456789";
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (input.find(numbers[i]) != std::string::npos)
+            return (0);
+    }
+    return (1);
+}
+
+static  int    fill_contact_fields(Contact *contact)
 {
     std::string input;
 
+    input = generic_auxiliar_function("Insira o numero de telefone");
+    if (!verify_number(input) && input.length() == 9)
+        contact->set_number(input);
+    else
+    {
+        std::cout << "Numero Invalido o Numero Nao Sera Gravado" << std::endl;
+        usleep(5000 * 500);
+        return (0);
+    }
     input = generic_auxiliar_function("Insira o primeiro nome");
     contact->set_fname(input);
     input = generic_auxiliar_function("Insira o sobrenome nome");
@@ -44,8 +65,7 @@ static  void    fill_contact_fields(Contact *contact)
     contact->set_nname(input);
     input = generic_auxiliar_function("Insira um segredo");
     contact->set_dark_secret(input);
-    input = generic_auxiliar_function("Insira o numero de telefone");
-    contact->set_number(input);
+    return (1);
 }
 
 int main()
@@ -67,8 +87,8 @@ int main()
         system("clear");
         if (comand.compare("ADD") == 0)
         {
-            fill_contact_fields(&contact);
-            phonebook.add_contact(contact);
+            if (fill_contact_fields(&contact))
+                phonebook.add_contact(contact);
             system("clear");
         }
         else if (comand.compare("SEARCH") == 0)

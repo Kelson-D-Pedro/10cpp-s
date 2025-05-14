@@ -6,7 +6,7 @@
 /*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 15:36:21 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/03 17:55:08 by kpedro           ###   ########.fr       */
+/*   Updated: 2025/05/14 13:08:10 by kpedro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Contact::Contact()
     number = "";
 }
 
-Contact::Contact(std::string f_name, std::string l_name, std::string n_name, std::string dark_secrets, std::string number)
+Contact::Contact(std::string f_name, std::string l_name, std::string n_name, std::string dark_secret, std::string number)
 {
     this->f_name = f_name;
     this->l_name = l_name;
