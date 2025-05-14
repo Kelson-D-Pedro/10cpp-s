@@ -6,7 +6,7 @@
 /*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:19:52 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/14 13:23:17 by kpedro           ###   ########.fr       */
+/*   Updated: 2025/05/14 13:27:06 by kpedro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static  int    fill_contact_fields(Contact *contact)
     else
     {
         std::cout << "Numero Invalido o Numero Nao Sera Gravado" << std::endl;
-        usleep(5000 * 500);
+        usleep(5000 * 300);
         return (0);
     }
     input = generic_auxiliar_function("Insira o primeiro nome");
