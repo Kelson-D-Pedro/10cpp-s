@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: darwin <darwin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:37:25 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/15 15:38:55 by kpedro           ###   ########.fr       */
+/*   Updated: 2025/05/18 12:53:37 by darwin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed
 private:
 
     int value;
-    int bits;
+    static const int bits = 8;
 
 public:
 
@@ -28,7 +28,8 @@ public:
     Fixed(const Fixed& other);
     Fixed& operator=(const Fixed& other);
     ~Fixed();
-    int getRawBits(void);
+    int     getRawBits(void) const;
+    void    setRawBits(int const raw);
 
 };
 
