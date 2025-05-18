@@ -6,7 +6,7 @@
 /*   By: darwin <darwin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:27:03 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/18 16:10:54 by darwin           ###   ########.fr       */
+/*   Updated: 2025/05/18 16:32:55 by darwin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Fixed::Fixed(const Fixed& other) : value(other.value )
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-    std::cout   << "Copy assignment operator called" << std::endl;
+    std::cout   << "Copy assignment operator calleds" << std::endl;
     if (this != &other)
         this->value = other.value;
     return (*this);
@@ -44,6 +44,67 @@ Fixed& Fixed::operator=(const Fixed& other)
 Fixed::~Fixed()
 {
     std::cout   << "Destructor called" << std::endl;
+}
+Fixed   Fixed::operator+(Fixed const other) const
+{
+    Fixed   temp;
+
+    temp.setRawBits(this->getRawBits() + other.getRawBits());
+    return (temp);
+}
+
+Fixed   Fixed::operator-(Fixed const other) const
+{
+    Fixed   temp;
+
+    temp.setRawBits(this->getRawBits() - other.getRawBits());
+    return (temp);
+}
+
+Fixed   Fixed::operator*(Fixed const other) const
+{
+    Fixed   temp;
+
+    temp.setRawBits((this->getRawBits() * other.getRawBits()) / (1 << 8));
+    return (temp);
+}
+
+Fixed   Fixed::operator/(Fixed const other) const
+{
+    Fixed   temp;
+
+    temp.setRawBits((this->getRawBits() *  (1 << 8)) / other.getRawBits());
+    return (temp);
+}
+
+bool Fixed::operator<(const Fixed& other) const
+{
+    return (this->getRawBits() < other.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed& other) const
+{
+    return (this->getRawBits() <= other.getRawBits());
+}
+
+bool Fixed::operator>(const Fixed& other) const
+{
+    return (this->getRawBits() > other.getRawBits());
+}
+
+bool Fixed::operator>=(const Fixed& other) const
+{
+    return (this->getRawBits() >= other.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed& other) const
+{
+    return (this->getRawBits() == other.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed& other) const
+{
+    return (this->getRawBits() != other.getRawBits());
 }
 
 float   Fixed::toFloat(void) const
@@ -60,4 +121,15 @@ std::ostream&   operator<<(std::ostream& os, const Fixed& fixed)
 {
     os << fixed.toFloat();
     return (os);
+}
+
+int Fixed::getRawBits(void) const
+{
+    std::cout   << "getRawBits member function called" << std::endl;
+    return (this->value);
+}
+
+void    Fixed::setRawBits(int const raw)
+{
+    this->value = raw;
 }
