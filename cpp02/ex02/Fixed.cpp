@@ -6,7 +6,7 @@
 /*   By: darwin <darwin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:27:03 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/18 16:32:55 by darwin           ###   ########.fr       */
+/*   Updated: 2025/05/18 17:26:43 by darwin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ Fixed::~Fixed()
 {
     std::cout   << "Destructor called" << std::endl;
 }
+
+
+
+
+
+
+
 Fixed   Fixed::operator+(Fixed const other) const
 {
     Fixed   temp;
@@ -77,6 +84,42 @@ Fixed   Fixed::operator/(Fixed const other) const
     return (temp);
 }
 
+
+
+
+
+Fixed&  Fixed::operator++()
+{
+    ++this->value;
+    return (*this);
+}
+
+Fixed&  Fixed::operator--()
+{
+    --this->value;
+    return (*this);
+}
+
+Fixed  Fixed::operator++(int)
+{
+    Fixed   temp = *this;
+    this->value++;
+    return temp;
+}
+
+Fixed  Fixed::operator--(int)
+{
+    Fixed   temp = *this;
+    this->value--;
+    return temp;
+}
+
+
+
+
+
+
+
 bool Fixed::operator<(const Fixed& other) const
 {
     return (this->getRawBits() < other.getRawBits());
@@ -106,6 +149,15 @@ bool Fixed::operator!=(const Fixed& other) const
 {
     return (this->getRawBits() != other.getRawBits());
 }
+
+
+
+
+
+
+
+
+
 
 float   Fixed::toFloat(void) const
 {

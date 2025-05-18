@@ -6,7 +6,7 @@
 /*   By: darwin <darwin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:26:48 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/18 16:42:28 by darwin           ###   ########.fr       */
+/*   Updated: 2025/05/18 17:25:17 by darwin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ public:
     ~Fixed();
     
     Fixed& operator=(const Fixed& other);
+    Fixed&  operator++();
+    Fixed&  operator--();
+    Fixed  operator++(int);
+    Fixed  operator--(int);
 
     Fixed   operator+(Fixed const other) const;
     Fixed   operator-(Fixed const other) const;
     Fixed   operator*(Fixed const other) const;
     Fixed   operator/(Fixed const other) const;
 
-    Fixed&  operator++() const;
-    Fixed&  operator--() const;
-    Fixed&  operator++(int) const;
-    Fixed&  operator--(int) const;
 
     bool  operator<(const Fixed& other) const;
     bool  operator<=(const Fixed& other) const;
