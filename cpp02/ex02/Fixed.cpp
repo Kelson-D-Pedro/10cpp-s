@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darwin <darwin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:27:03 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/18 17:26:43 by darwin           ###   ########.fr       */
+/*   Updated: 2025/05/19 10:32:33 by kpedro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,22 @@
 
 Fixed::Fixed() : value(0)
 {
-    std::cout   << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(int const value) : value(value * (1 << 8))
 {
-    std::cout   << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(float const value) : value(value * (1 << 8))
 {
-    std::cout   << "Float constructor called" << std::endl;
 }
 Fixed::Fixed(const Fixed& other) : value(other.value )
 {
-    std::cout   << "Copy constructor called" << std::endl;
 }
 
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-    std::cout   << "Copy assignment operator calleds" << std::endl;
     if (this != &other)
         this->value = other.value;
     return (*this);
@@ -43,7 +38,6 @@ Fixed& Fixed::operator=(const Fixed& other)
 
 Fixed::~Fixed()
 {
-    std::cout   << "Destructor called" << std::endl;
 }
 
 
@@ -115,6 +109,30 @@ Fixed  Fixed::operator--(int)
 }
 
 
+Fixed&  Fixed::min(Fixed& a, Fixed& b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return (b);
+    return (a); 
+}
+const Fixed&  Fixed::min(const Fixed& a, const Fixed& b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return (b);
+    return (a); 
+}
+Fixed&  Fixed::max(Fixed& a, Fixed& b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return (a);
+    return (b);
+}
+const Fixed&  Fixed::max(const Fixed& a, const Fixed& b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return (a);
+    return (b);
+}
 
 
 
@@ -177,7 +195,6 @@ std::ostream&   operator<<(std::ostream& os, const Fixed& fixed)
 
 int Fixed::getRawBits(void) const
 {
-    std::cout   << "getRawBits member function called" << std::endl;
     return (this->value);
 }
 

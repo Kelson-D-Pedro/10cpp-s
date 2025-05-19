@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darwin <darwin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpedro <kpedro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:26:48 by kpedro            #+#    #+#             */
-/*   Updated: 2025/05/18 17:25:17 by darwin           ###   ########.fr       */
+/*   Updated: 2025/05/19 10:29:17 by kpedro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ public:
     Fixed(float const value);
     Fixed(const Fixed& other);
     ~Fixed();
-    
+
+    static  Fixed&  min(Fixed& a, Fixed& b);
+    static const Fixed&  min(const Fixed& a, const Fixed& b);
+    static  Fixed&  max(Fixed& a, Fixed& b);
+    static const Fixed&  max(const Fixed& a, const Fixed& b);
     Fixed& operator=(const Fixed& other);
     Fixed&  operator++();
     Fixed&  operator--();
